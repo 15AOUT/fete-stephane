@@ -6,7 +6,7 @@
   <title>Fête de Stéphane 🎉</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: "Segoe UI", Arial, sans-serif; background: #f0f4ff; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px 16px; }
+    body { font-family: 'Segoe UI', Arial, sans-serif; background: #f0f4ff; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 24px 16px; }
     .card { background: white; border-radius: 16px; box-shadow: 0 4px 24px rgba(0,0,0,0.10); max-width: 560px; width: 100%; overflow: hidden; }
     .invitation-img { width: 100%; display: block; }
     .header { background: linear-gradient(135deg, #4f46e5, #7c3aed); color: white; padding: 28px 32px 22px; }
@@ -41,6 +41,7 @@
     <p>Remplis ce formulaire pour confirmer ta présence. Merci !</p>
   </div>
   <form class="form-body" id="mainForm" action="https://formspree.io/f/xeewjpbo" method="POST" onsubmit="soumettre(event)">
+
     <div class="row-2">
       <div class="field">
         <label for="prenom">Prénom<span class="required">*</span></label>
@@ -51,15 +52,19 @@
         <input class="text-input" type="text" id="nom" name="nom" placeholder="Tremblay" required />
       </div>
     </div>
+
     <div class="field">
       <label for="courriel">Courriel<span class="required">*</span></label>
       <input class="text-input" type="email" id="courriel" name="email" placeholder="jean@exemple.com" required />
     </div>
+
     <div class="field">
       <label for="telephone">Téléphone <span style="font-weight:400;color:#6b7280;">(pour texto le jour de la surprise)</span><span class="required">*</span></label>
       <input class="text-input" type="tel" id="telephone" name="telephone" placeholder="514 000-0000" required />
     </div>
+
     <hr class="divider" />
+
     <div class="field">
       <label>Serez-vous présent(e) ?<span class="required">*</span></label>
       <div class="options">
@@ -69,7 +74,9 @@
         <label for="pres-non">❌ Non</label>
       </div>
     </div>
+
     <hr class="divider" />
+
     <div class="field">
       <label>Nombre de personnes (incluant vous)<span class="required">*</span></label>
       <div class="options">
@@ -80,9 +87,11 @@
         <input type="radio" name="nb_personnes" id="p5" value="5 et plus" /><label for="p5">5 et plus</label>
       </div>
     </div>
+
     <hr class="divider" />
+
     <div class="field">
-      <label>Nombre d&apos;enfants de moins de 12 ans<span class="required">*</span></label>
+      <label>Nombre d'enfants de moins de 12 ans<span class="required">*</span></label>
       <div class="options">
         <input type="radio" name="enfants_12" id="e12-0" value="0" required /><label for="e12-0">0</label>
         <input type="radio" name="enfants_12" id="e12-1" value="1" /><label for="e12-1">1</label>
@@ -90,9 +99,11 @@
         <input type="radio" name="enfants_12" id="e12-3" value="3 et plus" /><label for="e12-3">3 et plus</label>
       </div>
     </div>
+
     <hr class="divider" />
+
     <div class="field">
-      <label>Nombre d&apos;enfants de moins de 5 ans<span class="required">*</span></label>
+      <label>Nombre d'enfants de moins de 5 ans<span class="required">*</span></label>
       <div class="options">
         <input type="radio" name="enfants_5" id="e5-0" value="0" required /><label for="e5-0">0</label>
         <input type="radio" name="enfants_5" id="e5-1" value="1" /><label for="e5-1">1</label>
@@ -100,13 +111,17 @@
         <input type="radio" name="enfants_5" id="e5-3" value="3 et plus" /><label for="e5-3">3 et plus</label>
       </div>
     </div>
+
     <hr class="divider" />
+
     <div class="field">
       <label for="allergie_detail">Allergies alimentaires <span style="font-weight:400;color:#6b7280;">(laisser vide si aucune)</span></label>
       <textarea class="text-input" id="allergie_detail" name="allergie_detail" placeholder="Ex : arachides, gluten, lactose…" style="min-height:80px;resize:vertical;"></textarea>
     </div>
+
     <button type="submit" class="submit-btn">Envoyer ma réponse</button>
   </form>
+
   <div class="merci" id="merci">
     <div class="emoji">🎊</div>
     <h2>Merci pour ta réponse !</h2>
@@ -116,12 +131,12 @@
 <script>
   async function soumettre(e) {
     e.preventDefault();
-    const form = document.getElementById("mainForm");
+    const form = document.getElementById('mainForm');
     const data = new FormData(form);
     try {
-      const res = await fetch(form.action, { method: "POST", body: data, headers: { "Accept": "application/json" } });
-      if (res.ok) { form.style.display = "none"; document.getElementById("merci").style.display = "block"; }
-      else { alert("Une erreur est survenue. Réessaie dans quelques instants."); }
+      const res = await fetch(form.action, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } });
+      if (res.ok) { form.style.display = 'none'; document.getElementById('merci').style.display = 'block'; }
+      else { alert('Une erreur est survenue. Réessaie dans quelques instants.'); }
     } catch { alert("Impossible d'envoyer le formulaire. Vérifie ta connexion internet."); }
   }
 </script>
